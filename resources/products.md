@@ -175,6 +175,12 @@ These fields can be used to filter the query. By default, without any filters, t
      <td>The maximum inventory level when inventory tracking in enabled</td>
    </tr>
    <tr>
+     <td>include_sku</td>
+     <td>boolean</td>
+     
+     <td>Include products which inventory is tracked by SKU, to be used in conjunction with the "max_inventory_level" and "min_inventory_level" filter.
+   </tr>
+   <tr>
      <td>min_price</td>
      <td>float</td>
      
