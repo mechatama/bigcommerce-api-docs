@@ -37,6 +37,11 @@ Store resource
 	"order_email": "orders@mystore.com",
 	"language": "en",
 	"currency": "USD",
+	"currency_symbol": "$",
+	"decimal_separator": ".",
+	"thousands_separator": ",",
+	"decimal_places": 2,
+	"currency_symbol_location": "left",
 	"weight_units": "LBS",
 	"dimension_units": "Inches"
 }
