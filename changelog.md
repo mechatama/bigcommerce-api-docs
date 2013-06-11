@@ -2,6 +2,9 @@
 
 ### v2 changes
 
+#### 11 June 2013
+1. [Products resource](https://developer.bigcommerce.com/api/products). Added support for filtering by Category Name or Category ID.
+
 #### 3 Jun 2013
 1. [Customer Addresses sub-resource](https://developer.bigcommerce.com/api/customers/addresses). Added new Customers sub-resource with support for GET/PUT/POST/DELETE.
 2. [Customer Groups resource](https://developer.bigcommerce.com/api/customersgroups). Added new resource with support for GET/PUT/POST/DELETE.
