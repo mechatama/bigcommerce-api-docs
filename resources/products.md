@@ -97,6 +97,12 @@ These fields can be used to filter the query. By default, without any filters, t
      <td>The product description</td>
    </tr>
    <tr>
+     <td>category</td>
+     <td>string | integer</td>
+     
+     <td>The category_id or category_name</td>
+   </tr>
+   <tr>
      <td>condition</td>
      <td>enum</td>
      
