@@ -43,7 +43,7 @@
 GET brands from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the brands.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 brands.
 
 <table class="table table-bordered ">
   <thead>
@@ -54,14 +54,31 @@ These fields can be used to filter the query. By default, without any filters, t
    </tr>
  </thead>
  <tbody>
-   
+   <tr>
+     <td>min_id</td>
+     <td>int</td>
+     <td>The minimum ID of the brand</td>
+   </tr>
+   <tr>
+     <td>max_id</td>
+     <td>int</td>
+     <td>The maximum ID of the brand</td>
+   </tr>
+   <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of brands your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 brands, you can use the page=1&limit=200 to get the first 200 brands and increment the page counter to get the next 100.</td>
+   </tr>
    <tr>
      <td>name</td>
      <td>string(255)</td>
-     
      <td>The name of the brand. Must be unique.</td>
    </tr>
-   
  </tbody>
 </table>
 

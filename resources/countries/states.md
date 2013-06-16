@@ -34,7 +34,7 @@
 GET states from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the states.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 states.
 
 <table class="table table-bordered ">
   <thead>
@@ -46,20 +46,25 @@ These fields can be used to filter the query. By default, without any filters, t
   </thead>
   <tbody>
    <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of states your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 states, you can use the page=1&limit=200 to get the first 200 states and increment the page counter to get the next 100.</td>
+   </tr>
+   <tr>
      <td>state</td>
      <td>string</td>
-     
      <td>state name</td>
    </tr>
    <tr>
      <td>state_abbreviation</td>
      <td>string</td>
-     
      <td>state abbreviation</td>
    </tr>
-
-   
-   
   </tbody>
 </table>
 
