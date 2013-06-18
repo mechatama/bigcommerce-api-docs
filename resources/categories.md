@@ -43,7 +43,7 @@
 GET categories from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the categories.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 categories.
 
 <table class="table table-bordered ">
   <thead>
@@ -57,35 +57,38 @@ These fields can be used to filter the query. By default, without any filters, t
    <tr>
      <td>min_id</td>
      <td>int</td>
-     
-     <td>Filter by min ID</td>
+     <td>The minimum ID of the category</td>
    </tr>
    <tr>
      <td>max_id</td>
      <td>int</td>
-     
-     <td>Filter by max ID</td>
+     <td>The maximum ID of the category</td>
    </tr>
-
+   <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of categories your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 categories, you can use the page=1&limit=200 to get the first 200 categories and increment the page counter to get the next 100.</td>
+   </tr>
    <tr>
      <td>parent_id</td>
      <td>int</td>
-     
      <td>The category id of the parent</td>
    </tr>
    <tr>
      <td>name</td>
      <td>string</td>
-     
      <td>The name of the category</td>
    </tr>
    <tr>
      <td>is_visible</td>
      <td>boolean</td>
-     
      <td>Indicates whether the category is visible</td>
    </tr>
-   
   </tbody>
 </table>
 

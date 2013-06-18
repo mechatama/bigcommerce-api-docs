@@ -50,7 +50,7 @@ Customer groups allow you to apply rules to particular segments of a store’s c
 
 ## Filters
 
-The following fields can be used to filter the collection via URL parameters:
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 groups.
 
 <table class="table table-bordered ">
   <thead>
@@ -61,6 +61,16 @@ The following fields can be used to filter the collection via URL parameters:
    </tr>
   </thead>
   <tbody>
+   <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of groups your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 groups, you can use the page=1&limit=200 to get the first 200 groups and increment the page counter to get the next 100.</td>
+   </tr>
    <tr>
      <td>name</td>
      <td>string</td>

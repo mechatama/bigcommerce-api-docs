@@ -41,7 +41,7 @@
 GET coupons from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the coupons.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 coupons.
 
 <table class="table table-bordered ">
   <thead>
@@ -53,8 +53,28 @@ These fields can be used to filter the query. By default, without any filters, t
   </thead>
   <tbody>
    <tr>
+     <td>min_id</td>
+     <td>int</td>
+     <td>The minimum ID of the coupon</td>
+   </tr>
+   <tr>
+     <td>max_id</td>
+     <td>int</td>
+     <td>The maximum ID of the coupon</td>
+   </tr>
+   <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of coupons your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 coupons, you can use the page=1&limit=200 to get the first 200 coupons and increment the page counter to get the next 100.</td>
+   </tr>
+   <tr>
      <td>id</td>
-     <td>integer</td>
+     <td>int</td>
      <td>coupon id</td>
    </tr>
    <tr>
@@ -72,17 +92,6 @@ These fields can be used to filter the query. By default, without any filters, t
      <td>string</td>
      <td>coupon type</td>
    </tr>
-   <tr>
-     <td>min_id</td>
-     <td>string</td>
-     <td>coupons with id greater than min_id</td>
-   </tr>
-   <tr>
-     <td>max_id</td>
-     <td>string</td>
-     <td>coupons with id less than max_id</td>
-   </tr>
-
   </tbody>
 </table>
 

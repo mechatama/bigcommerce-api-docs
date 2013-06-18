@@ -43,7 +43,7 @@
 GET products from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the products.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 products.
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -57,157 +57,131 @@ These fields can be used to filter the query. By default, without any filters, t
    <tr>
      <td>min_id</td>
      <td>int</td>
-     
      <td>The minimum ID of the product</td>
    </tr>
    <tr>
      <td>max_id</td>
      <td>int</td>
-     
      <td>The maximum ID of the product</td>
    </tr>
    <tr>
      <td>limit</td>
-     <td>integer</td>
-     
-     <td>The number of products your query should return (the max is 200 per page)</td>
+     <td>int</td>
+     <td>The number of products your query should return (the max is 250 per page)</td>
    </tr>
    <tr>
      <td>page</td>
-     <td>integer</td>
-     
+     <td>int</td>
      <td>The page number of the results. If you have say 300 products, you can use the page=1&limit=200 to get the first 200 products and increment the page counter to get the next 100.</td>
    </tr>
    <tr>
      <td>name</td>
      <td>string</td>
-     
      <td>The product name</td>
    </tr>
    <tr>
      <td>sku</td>
      <td>string</td>
-     
      <td>The product sku</td>
    </tr>
    <tr>
      <td>description</td>
      <td>string</td>
-     
      <td>The product description</td>
    </tr>
    <tr>
      <td>category</td>
-     <td>string | integer</td>
-     
+     <td>string | int</td>
      <td>The category_id or category_name</td>
    </tr>
    <tr>
      <td>condition</td>
      <td>enum</td>
-     
      <td>The product condition - [New, Used, Refurbished]</td>
    </tr>
    <tr>
      <td>availability</td>
      <td>enum</td>
-     
      <td>The availability of the product - [available, disabled, preorder]</td>
    </tr>
    <tr>
      <td>brand_id</td>
      <td>int</td>
-     
      <td>The product's brand</td>
    </tr>
    <tr>
      <td>min_date_created</td>
      <td>date</td>
-     
      <td>The minimum date when the product was created</td>
    </tr>
    <tr>
      <td>max_date_created</td>
      <td>date</td>
-     
      <td>The maximum date when the product was created</td>
    </tr>
    <tr>
      <td>min_date_modified</td>
      <td>date</td>
-     
      <td>The minimum date when the product was modified</td>
    </tr>
    <tr>
      <td>max_date_modified</td>
      <td>date</td>
-     
      <td>The maximum date when the product was last modified</td>
    </tr>
    <tr>
      <td>min_date_last_imported</td>
      <td>date</td>
-     
      <td>The minimum date when the product was imported</td>
    </tr>
    <tr>
      <td>max_date_last_imported</td>
      <td>date</td>
-     
      <td>The maximum date when the product was imported</td>
    </tr>
    <tr>
      <td>is_visible</td>
      <td>boolean</td>
-     
      <td>Product visibility status</td>
    </tr>
    <tr>
      <td>is_featured</td>
      <td>booelan</td>
-     
      <td>Product featured status</td>
    </tr>
    <tr>
      <td>min_inventory_level</td>
      <td>int</td>
-     
      <td>The minimum inventory level when inventory tracking is enabled</td>
    </tr>
    <tr>
      <td>max_inventory_level</td>
      <td>int</td>
-     
      <td>The maximum inventory level when inventory tracking in enabled</td>
    </tr>
    <tr>
      <td>include_sku</td>
      <td>boolean</td>
-     
      <td>Include products which inventory is tracked by SKU, to be used in conjunction with the "max_inventory_level" and "min_inventory_level" filter.
    </tr>
    <tr>
      <td>min_price</td>
      <td>float</td>
-     
      <td>The minimum product price</td>
    </tr>
    <tr>
      <td>max_price</td>
      <td>float</td>
-     
      <td>The maximum product price</td>
    </tr>
    <tr>
      <td>min_number_sold</td>
      <td>int</td>
-     
      <td>The minimum number of products sold</td>
    </tr>
    <tr>
      <td>max_number_sold</td>
      <td>int</td>
-     
      <td>The maximum number of products sold</td>
    </tr>
   </tbody>

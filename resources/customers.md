@@ -35,7 +35,7 @@
 GET customers from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the customers.
+These fields can be used to filter the query. By default, without any filters, the GET request returns the first 50 customers.
 
 <table class="table table-bordered ">
   <thead>
@@ -49,77 +49,68 @@ These fields can be used to filter the query. By default, without any filters, t
    <tr>
      <td>min_id</td>
      <td>int</td>
-     
-     <td>minimum ID of the customer</td>
+     <td>The minimum ID of the customer</td>
    </tr>
-
    <tr>
      <td>max_id</td>
      <td>int</td>
-     
-     <td>maximum ID of the customer</td>
+     <td>The maximum ID of the customer</td>
    </tr>
-
+   <tr>
+     <td>limit</td>
+     <td>int</td>
+     <td>The number of customers your query should return (the max is 250 per page)</td>
+   </tr>
+   <tr>
+     <td>page</td>
+     <td>int</td>
+     <td>The page number of the results. If you have say 300 customers, you can use the page=1&limit=200 to get the first 200 customers and increment the page counter to get the next 100.</td>
+   </tr>
    <tr>
      <td>first_name</td>
      <td>string</td>
-     
      <td>First name of customer</td>
    </tr>
-
    <tr>
      <td>last_name</td>
      <td>string</td>
-     
      <td>Last name of customer</td>
    </tr>
-
    <tr>
      <td>company</td>
      <td>string</td>
-     
      <td>Company customer is part of</td>
    </tr>
    <tr>
      <td>email</td>
      <td>string</td>
-     
      <td>Email address of the customer</td>
    </tr>
    <tr>
      <td>phone</td>
      <td>string</td>
-     
      <td>Phone number of customer</td>
    </tr>
-
    <tr>
      <td>store_credit</td>
      <td>decimal</td>
-     
      <td>The amount of credit the customer has</td>
    </tr>
-
    <tr>
      <td>customer_group_id</td>
      <td>int</td>
-     
      <td>The group the customer belongs to</td>
    </tr>
    <tr>
      <td>min_date</td>
      <td>date</td>
-     
      <td>The minimum creation date of the customer</td>
    </tr>
    <tr>
      <td>max_date</td>
      <td>date</td>
-     
      <td>The maximumn creation date of the customer</td>
    </tr>
-   
-   
   </tbody>
 </table>
 
