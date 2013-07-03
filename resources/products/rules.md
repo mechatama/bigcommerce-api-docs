@@ -122,11 +122,11 @@ tr.mandatory {
      
      <td>The ID of the product the rule belongs to</td>
    </tr>
-   <tr class="mandatory">
-     <td >rule_file</td>
+   <tr>
+     <td>image_file</td>
      <td>string</td>
      
-     <td>When specifying a product rule, the rule_file should be specified as either: A path to an rule already uploaded via FTP in the import directory and the path should be relative from the import directory. It can be a URL to an rule accessible on the internet.</td>
+     <td>When specifying a product rule, the image_file should be specified as either: A path to an rule already uploaded via FTP in the import directory and the path should be relative from the import directory. It can be a URL to an rule accessible on the internet.</td>
    </tr>
    <tr >
      <td >is_thumbnail</td>
@@ -353,11 +353,11 @@ This PUT request takes following parameters.
    
    <td>The ID of the product the rule belongs to</td>
  </tr>
- <tr class="mandatory">
-   <td >rule_file</td>
+ <tr>
+   <td >image_file</td>
    <td>string</td>
    
-   <td>When specifying a product rule, the rule_file should be specified as either: A path to an rule already uploaded via FTP in the import directory and the path should be relative from the import directory. It can be a URL to an rule accessible on the internet.</td>
+   <td>When specifying a product rule, the image_file should be specified as either: A path to an rule already uploaded via FTP in the import directory and the path should be relative from the import directory. It can be a URL to an rule accessible on the internet.</td>
  </tr>
  <tr >
    <td >is_thumbnail</td>
