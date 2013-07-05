@@ -322,7 +322,7 @@ Deleting orders is a potentially destructive operation. Deleted orders cannot be
 
 The Orders POST resource allows you to manually create and submit an order.
 
-You can create overrides for values such as product prices, subtotal and totals. When not supplied the resource will use the pre-set store values and do the calculation automatically, respecting tax rules which are applicable to the billing/shipping address of the order.
+You can create overrides for values such as product prices, subtotal and totals. When not supplied, the resource will use the pre-set store values and do the calculation automatically, respecting tax rules which are applicable to the billing/shipping address of the order.
 
 ##### Specifics on Products
 
@@ -1018,7 +1018,9 @@ Status Code: 201 Created
 
 ### PUT orders/id.json
 
-Update an order. Orders PUT supports the same fields as the POST method. Refer to the <a href="#post-ordersjson">orders POST reference</a> for more information on what the resource supports, its caveats and sample input.
+Update an order.
+
+Orders PUT supports the same fields as the POST method. Refer to the <a href="#post-ordersjson">orders POST reference</a> for more information on what the resource supports, its caveats and sample input.
 
 #### Calculated Fields
 
@@ -1035,7 +1037,7 @@ The following fields will trigger a recalculation of the subtotal and total.
 - `billing_address`
 - `shipping_addresses`
 
-__NOTE:__ *The Orders API currently does not support coupon redemptions and discounts apart from manual discount. You should only modify the above fields if you have created the order via the POST operation or you intend to override the subtotals and totals manually.*
+__NOTE:__ *The Orders resource currently does not support coupon redemptions and discounts apart from manual discount. You should only modify the above fields if you have created the order via the POST operation or you intend to override the subtotals and totals manually.*
 
 
 #### Request
