@@ -316,7 +316,7 @@ DELETE all orders
 ### DELETE orders/id.json
 DELETE a order
 
-Deleting orders is a potentially destrutive operation. Deleted orders cannot be recovered.
+Deleting orders is a potentially destructive operation. Deleted orders cannot be recovered.
 
 ### POST orders.json
 
