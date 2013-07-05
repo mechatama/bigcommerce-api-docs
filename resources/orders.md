@@ -41,10 +41,10 @@
    
 ## Description
 ### GET orders.json
-GET orders from a store
+Get a list of orders from a store
 
 #### Request
-These fields can be used to filter the query. By default, without any filters, the GET request returns all the orders.
+The following fields can be used to filter the query. By default, without any filters, the GET request returns all the orders.
 
 <table class="table table-bordered ">
   <thead>
@@ -205,7 +205,7 @@ List of orders
 </pre>
 
 ### GET orders/id.json
-GET a order from a store
+Get a single order from a store
 
 #### Request
 This GET request does not take any parameters.
@@ -296,7 +296,7 @@ order by ID
 
 
 ### GET orders/count.json
-Get a total number of orders in the store
+Get the total number of orders in the store
 
 #### Request
 This request does not take any parameters.
@@ -308,19 +308,21 @@ Returns the number of orders in the store
     "count": 10
   }
 </pre>
-Here are resources to delete orders. This is a potentially destrutive operation. Remember that you cannot recover deleted orders.
 
 ### DELETE orders.json
 DELETE all orders
 
+
 ### DELETE orders/id.json
 DELETE a order
 
+Deleting orders is a potentially destrutive operation. Deleted orders cannot be recovered.
+
 ### POST orders.json
 
-Effectively the Orders POST API allows you to submit a manual order.
+The Orders POST resource allows you to manually create and submit an order.
 
-The API allows you to create overrides for values, e.g: product prices, subtotal and totals. When not supplied the API will use the store's values and do the calculation automatically as if an order was made through the store, respecting tax rules set by the store which are applicable to the billing/shipping address of the order.
+You can create overrides for values such as product prices, subtotal and totals. When not supplied the resource will use the pre-set store values and do the calculation automatically, respecting tax rules which are applicable to the billing/shipping address of the order.
 
 ##### Specifics on Products
 
@@ -1016,22 +1018,24 @@ Status Code: 201 Created
 
 ### PUT orders/id.json
 
-UPDATE an order from a store. Orders PUT supports the same fields as the POST method. Refer to the <a href="#post-ordersjson">order POST documentation</a> for more information on what the resource supports, its caveats and sample input.
+Update an order. Orders PUT supports the same fields as the POST method. Refer to the <a href="#post-ordersjson">orders POST reference</a> for more information on what the resource supports, its caveats and sample input.
+
+#### Calculated Fields
 
 The following fields will trigger a recalculation of the subtotal and total.
 
-- products
-- discount_amount
-- shipping_cost_ex_tax
-- shipping_cost_inc_tax
-- handling_cost_ex_tax
-- handling_cost_inc_tax
-- wrapping_cost_ex_tax
-- wrapping_cost_inc_tax
-- billing_address
-- shipping_addresses
+- `products`
+- `discount_amount`
+- `shipping_cost_ex_tax`
+- `shipping_cost_inc_tax`
+- `handling_cost_ex_tax`
+- `handling_cost_inc_tax`
+- `wrapping_cost_ex_tax`
+- `wrapping_cost_inc_tax`
+- `billing_address`
+- `shipping_addresses`
 
-__NOTE:__ *Be wary that the Orders API currently does not support coupon redemptions and discounts apart from manual discount. You should ideally only modify the above fields if you have created the order via the POST API or you are overriding the subtotals and totals manually.*
+__NOTE:__ *The Orders API currently does not support coupon redemptions and discounts apart from manual discount. You should only modify the above fields if you have created the order via the POST operation or you intend to override the subtotals and totals manually.*
 
 
 #### Request
