@@ -43,7 +43,9 @@ When you navigate to https://devportal.bigcommerce.com/beta/wehooks you will be 
 
 A client ID and secret will be created for you in your dashboard as shown in the screenshot above.
 
-Once you have provisioned webhooks, you can start subscribing to events from the above events list. However, before doing that, you need an 'access_token'. You can generate the access token via a POST request on the /token endpoint. The POST request will contain the fields - client_id, client_secret, user, token, store_domain. The client_id and client_secret are provided to you by the dev portal where as user, token and store_domain are your API credentials that you have traditionally used to make API requests.
+Once you have provisioned webhooks, you can start subscribing to events from the above events list. However, before doing that, you will need an 'access_token' for each store you are connecting to. You application will need to manage the access_token to store association by itself.
+
+You can generate the access token via a POST request on the /token endpoint. The POST request will contain the fields - client_id, client_secret, user, token, store_domain. The client_id and client_secret are provided to you by the dev portal where as user, token and store_domain are your API credentials that you have traditionally used to make API requests.
 
 <pre>
    curl -XPOST -d '{"client_id":"client123","client_secret":"client123secret","user":"admin","token":"xxxx","store_domain":"https://store-xxxx.mybigcommerce.com"}' https://hooks-beta.bigcommerce.com/token 
