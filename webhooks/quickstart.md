@@ -74,6 +74,7 @@ The above example demonstrates how you can subscribe for product updates. Make a
 1. In the postback, we send a light payload with only minimum details regarding the events that got triggered. It's up to you how you want to handle the notification in your application. For instance, we will send you details indicating that a product was updated, and you might want to handle it by fetching the new product via an API call.
 2. Bulk data imports will trigger the relevant events for every record affected. For example, if you have a hook on store/product/create and then the merchant imports 2,000 products, then there will be 2,000 event postbacks. 
 3. Payloads are serialized per hook per store. We are looking at enabling a replay feature down the road. What this means is, based on the serialized payload IDs, 3rd parties can detect if they've missed certain postbacks and then they, via a future update, you will be able call a replay method to get the missing events.
+4. Upon creation and updates to hooks, it may take up to 1 minute before you start receiving event postbacks.
 
 #### Sample payload delivered to webhooks
 
@@ -89,6 +90,27 @@ The above example demonstrates how you can subscribe for product updates. Make a
   "hash": "c7d70af0e11ab0bc97d25d913f986cb11cd651a1"
 }
 </pre>
+
+### Delivery retry mechanism
+
+Webhooks will do its best to deliver the events to your endpoint. The dispatcher will attempt several retries (with increasing interval) until the maximum retry limit is reached. Once the maximum retry limit is reached for a specific event, your hook will be deactivated. Should you wish to re-activate the hook, you can set the "is_active" flag back to true via HTTP PUT to the /<hook_id> endpoint.
+
+#### Retry increments
+
+1.	As soon as possible after the event occurs
+2.	30 seconds after the most recent failure
+3.	60 seconds after the most recent failure
+4.	180 seconds after the most recent failure
+5.	300 seconds after the most recent failure
+6.	600 seconds after the most recent failure
+7.	900 seconds after the most recent failure
+8.	1800 seconds after the most recent failure
+9.	3600 seconds after the most recent failure
+10.	7200 seconds after the most recent failure
+11.	21600 seconds after the most recent failure
+12.	43200 seconds after the most recent failure
+13.	64800 seconds after the most recent failure
+14.	86400 seconds after the most recent failure
 
 
 ## API Endpoints
@@ -144,6 +166,7 @@ The above example demonstrates how you can subscribe for product updates. Make a
 		<tr><td><strong>created_at</strong> (read only)</td><td>string</td><td>2013-01-17T11:27:50+11:00</td><td>The creation timestamp</td></tr>
 	
 		<tr><td><strong>updated_at</strong> (read only)</td><td>string</td><td>2013-01-17T11:27:50+11:00</td><td>The update timestamp</td></tr>
+		<tr><td><strong>is_active</strong></td><td>boolean</td><td>TRUE</td><td>Whether this hook is active or not (Defaults to TRUE)</td></tr>
 	</tbody>
 	
 </table>
@@ -168,13 +191,14 @@ X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992
 			"X-Custom-Auth-Header": "secret_hooks_auth_password"
 		},
 		"url": "https://superapp.com/webhook/orders"
-	}
+	},
+	"is_active": true
 }
 </pre>
 
 #### CURL
 <pre>
-curl -XPOST -d '{"producer":"store/74124","scope":"store/order/*","deliverymethod":"HTTP_POST","destination":{"headers":{"X-Custom-Auth-Header":"secret_hooks_auth_password"},"url":"https://superapp.com/webhook/orders"}}' -H 'X-Auth-Client: d34db33f' -H 'X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992' https://hooks-beta.bigcommerce.com
+curl -XPOST -d '{"producer":"store/74124","scope":"store/order/*","deliverymethod":"HTTP_POST","destination":{"headers":{"X-Custom-Auth-Header":"secret_hooks_auth_password"},"url":"https://superapp.com/webhook/orders"}, "is_active": true}' -H 'X-Auth-Client: d34db33f' -H 'X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992' https://hooks-beta.bigcommerce.com
 
 </pre>
 
@@ -197,7 +221,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-17T11:27:50+11:00"
+	"updated_at": "2013-01-17T11:27:50+11:00",
+	"is_active": true
 }
 </pre>
 
@@ -243,7 +268,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-17T11:27:50+11:00"
+	"updated_at": "2013-01-17T11:27:50+11:00",
+	"is_active": true
 }
 </pre>
 
@@ -270,13 +296,14 @@ X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992
 			"X-Custom-Auth-Header": "secret_hooks_auth_password"
 		},
 		"url": "https://superapp.com/webhook/orders_changed"
-	}
+	},
+	"is_active": false
 }
 </pre>
 
 #### CURL
 <pre>
-curl -XPUT -d '{"producer":"store/74124","scope":"store/order/*","deliverymethod":"HTTP_POST","destination":{"headers":{"X-Custom-Auth-Header":"secret_hooks_auth_password"},"url":"https://superapp.com/webhook/orders_changed"}}' -H 'X-Auth-Client: d34db33f' -H 'X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992' https://hooks-beta.bigcommerce.com
+curl -XPUT -d '{"producer":"store/74124","scope":"store/order/*","deliverymethod":"HTTP_POST","destination":{"headers":{"X-Custom-Auth-Header":"secret_hooks_auth_password"},"url":"https://superapp.com/webhook/orders_changed"}, "is_active": false}' -H 'X-Auth-Client: d34db33f' -H 'X-Auth-Token: a85a54c8fae33b2eb3b9d563a4664992' https://hooks-beta.bigcommerce.com
 
 </pre>
 
@@ -299,7 +326,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders_changed"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-18T11:27:50+11:00"
+	"updated_at": "2013-01-18T11:27:50+11:00",
+	"is_active": false
 }
 </pre>
 
@@ -342,7 +370,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-17T11:27:50+11:00"
+	"updated_at": "2013-01-17T11:27:50+11:00",
+	"is_active": true
 }
 </pre>
 
@@ -385,7 +414,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-17T11:27:50+11:00"
+	"updated_at": "2013-01-17T11:27:50+11:00",
+	"is_active": true
 },
 {
 	"id": 102,
@@ -400,7 +430,8 @@ Content-Type: application/json
 		"url": "https://superapp.com/webhook/orders"
 	},
 	"created_at": "2013-01-17T11:27:50+11:00",
-	"updated_at": "2013-01-17T11:27:50+11:00"
+	"updated_at": "2013-01-17T11:27:50+11:00",
+	"is_active": true
 }]
 </pre>
 
