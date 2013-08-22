@@ -694,9 +694,10 @@ You can create overrides for values such as product prices, subtotal and totals.
 <pre>
 {
     "customer_id": 0,
+    "status_id": 11,
     "date_created": "Thu, 04 Oct 2012 03:24:40 +0000",
-    "subtotal_ex_tax": 1705.00,
-    "subtotal_inc_tax": 1915.00,
+    "subtotal_ex_tax": 1705,
+    "subtotal_inc_tax": 1915,
     "base_shipping_cost": 0,
     "shipping_cost_ex_tax": 0,
     "shipping_cost_inc_tax": 0,
@@ -706,75 +707,61 @@ You can create overrides for values such as product prices, subtotal and totals.
     "base_wrapping_cost": 0,
     "wrapping_cost_ex_tax": 0,
     "wrapping_cost_inc_tax": 0,
-    "total_ex_tax": 1705.00,
-    "total_inc_tax": 1915.00,
+    "total_ex_tax": 1705,
+    "total_inc_tax": 1915,
     "refunded_amount": 0,
     "order_is_digital": false,
-    "store_credit_amount": 0,
-    "gift_certificate_amount": 0,
     "staff_notes": "",
     "customer_message": "",
     "discount_amount": 10,
-    "shipping_address_count": 2,
-    "is_deleted": false,
     "billing_address": {
-      "first_name": "Trisha",
-      "last_name": "McLaughlin",
-      "company": "",
-      "street_1": "12345 W Anderson Ln",
-      "street_2": "",
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78757",
-      "country": "United States",
-      "country_iso2": "US",
-      "phone": "",
-      "email": "elsie@example.com"
+        "first_name": "Trisha",
+        "last_name": "McLaughlin",
+        "company": "",
+        "street_1": "12345 W Anderson Ln",
+        "street_2": "",
+        "city": "Austin",
+        "state": "Texas",
+        "zip": "78757",
+        "country": "United States",
+        "country_iso2": "US",
+        "phone": "",
+        "email": "elsie@example.com"
     },
-"shipping_addresses": [{
-      "first_name": "Trisha",
-      "last_name": "McLaughlin",
-      "company": "Acme Pty Ltd",
-      "street_1": "566 Sussex St",
-      "street_2": "",
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78757",
-      "country": "United States",
-      "country_iso2": "US",
-      "phone": "",
-      "email": "elsie@example.com"
-    }],
-    "products": [ {
-         "product_id": 6,
-         "quantity": 2,
-         "product_options": [
-             { "id": 22, "value":  19 },
-             { "id": 23, "value":  27 },
-             { "id": 24, "value":  30 }
-         ]
-    },
-    {
-         "product_id": 6,
-         "quantity": 2,
-         "product_options": [
-             { "id": 22, "value":  19 },
-             { "id": 23, "value":  27 },
-             { "id": 24, "value":  30 }
-         ]
-    },
-    {
-       "product_id": 27,
-       "quantity": 3
-    },
-    {
-       "product_id": 25,
-       "quantity": 3
-    }
-
+    "shipping_addresses": [
+        {
+            "first_name": "Trisha",
+            "last_name": "McLaughlin",
+            "company": "Acme Pty Ltd",
+            "street_1": "566 Sussex St",
+            "street_2": "",
+            "city": "Austin",
+            "state": "Texas",
+            "zip": "78757",
+            "country": "United States",
+            "country_iso2": "US",
+            "phone": "",
+            "email": "elsie@example.com"
+        }
+    ],
+    "products": [
+        {
+            "product_id": 32,
+            "quantity": 2
+        },
+        {
+            "product_id": 33,
+            "quantity": 2,
+            "product_options": [
+                {
+                    "id": 87,
+                    "value": 10
+                }
+            ]
+        }
     ],
     "external_source": "POS"
-  }
+}
 </pre>
 
 #### Sample success response
